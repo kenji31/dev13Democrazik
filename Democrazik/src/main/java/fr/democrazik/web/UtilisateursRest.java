@@ -25,35 +25,34 @@ public class UtilisateursRest {
 
 	public class PersonneRest {
 		@Autowired
-		private UtilisateurRepository UtilisateurRepo;
+		private UtilisateurRepository utilisateurRepos;
 		
 		@RequestMapping(value="/users",method=RequestMethod.GET)
 		public List<Utilisateur> getPersonnes(){
-			return UtilisateurRepo.findAll();
-			
+			return utilisateurRepos.findAll();
 		}
+		
 		@RequestMapping(value="/users/{id}",method=RequestMethod.GET)
-		public Utilisateur getPersonnes(@PathVariable long id){
-			return UtilisateurRepo.findOne(id);
-			
+		public Utilisateur getPersonne(@PathVariable Long id){
+			return utilisateurRepos.findOne(id);
 		}
 		
 		@RequestMapping(value="/user",method=RequestMethod.POST)
 		public Utilisateur save(@RequestBody Utilisateur p){
-			return UtilisateurRepo.save(p);
+			return utilisateurRepos.save(p);
 			
 		}
 
 		@RequestMapping(value="/users/{id}",method=RequestMethod.DELETE)
-		public boolean supp(@PathVariable long id){
-			UtilisateurRepo.delete(id);
+		public boolean supp(@PathVariable Long id){
+			utilisateurRepos.delete(id);
 			return true;
 		}
 		
 		@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
-		public Utilisateur modif(@PathVariable long id,@RequestBody Utilisateur p){
+		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur p){
 			p.setId(id);
-			return UtilisateurRepo.save(p);
+			return utilisateurRepos.save(p);
 		}
 	}
 
