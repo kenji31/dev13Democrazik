@@ -1,3 +1,5 @@
+//hazmatique
+
 package fr.democrazik.entities;
 
 import javax.persistence.Column;
