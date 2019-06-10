@@ -17,6 +17,32 @@ public class Artiste {
 	
 	@ManyToOne
 	private Session session;
+	
+	
+	
+	
+		public Artiste(Long id, String nom, Session session) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.session = session;
+	}
+
+
+
+		public Artiste(String nom, Session session) {
+		super();
+		this.nom = nom;
+		this.session = session;
+	}
+		
+		
+
+	public Artiste() {
+			super();
+		}
+
+
 
 	public Long getId() {
 		return id;

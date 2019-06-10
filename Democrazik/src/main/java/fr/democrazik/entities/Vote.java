@@ -21,6 +21,26 @@ public class Vote {
 	
 	@ManyToOne
 	private Morceau morceau;
+	
+	
+	
+	
+
+	public Vote(Utilisateur utilisateur, Morceau morceau) {
+		super();
+		this.utilisateur = utilisateur;
+		this.morceau = morceau;
+	}
+	
+	
+	
+
+	public Vote() {
+		super();
+	}
+
+
+
 
 	public Long getId() {
 		return id;

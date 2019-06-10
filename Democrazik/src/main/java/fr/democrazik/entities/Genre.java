@@ -17,6 +17,37 @@ public class Genre {
 	
 	@ManyToOne
 	private Session session;
+	
+	
+	
+	
+
+	public Genre(Long id, String libelle, Session session) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.session = session;
+	}
+
+
+
+
+
+	public Genre(String libelle, Session session) {
+		super();
+		this.libelle = libelle;
+		this.session = session;
+	}
+	
+	
+	
+	
+
+	public Genre() {
+		super();
+	}
+
+
 
 	public Long getId() {
 		return id;

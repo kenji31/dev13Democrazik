@@ -21,6 +21,37 @@ public class Morceau {
 	private Genre genre;
 	@ManyToOne
 	private Artiste artiste;
+	
+	public Morceau(Long id, String titre, Session session, Genre genre, Artiste artiste) {
+		super();
+		this.id = id;
+		this.titre = titre;
+		this.session = session;
+		this.genre = genre;
+		this.artiste = artiste;
+	}
+	
+	
+	
+	
+	public Morceau(String titre, Session session, Genre genre, Artiste artiste) {
+		super();
+		this.titre = titre;
+		this.session = session;
+		this.genre = genre;
+		this.artiste = artiste;
+	}
+	
+	
+
+
+	public Morceau() {
+		super();
+	}
+
+
+
+
 	public Long getId() {
 		return id;
 	}
