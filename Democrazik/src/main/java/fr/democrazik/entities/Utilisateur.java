@@ -28,6 +28,8 @@ public class Utilisateur {
 	@ManyToOne
 	private Session session;
 	
+	
+	
 	public Utilisateur() {	
 	}
 	
