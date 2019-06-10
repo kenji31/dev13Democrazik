@@ -12,7 +12,7 @@ public class Genre {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(unique = true)
+	@Column(unique = true, nullable=false)
 	private String libelle;
 	
 	@ManyToOne
