@@ -21,33 +21,55 @@ import fr.democrazik.entities.Utilisateur;
 		@Autowired
 		private UtilisateurRepository utilisateurRepo;
 		
+		
+		//Afficher tout
 		@RequestMapping(value="/users",method=RequestMethod.GET)
 		public List<Utilisateur> getPersonnes(){
 			return utilisateurRepo.findAll();
 		}
 		
+		
+		//Chercher en fonction de l'ID
 		@RequestMapping(value="/users/{id}",method=RequestMethod.GET)
 		public Utilisateur getPersonne(@PathVariable Long id){
 			return utilisateurRepo.findOne(id);
 		}
 		
+		
+		//Ajouter dans BD
 		@RequestMapping(value="/user",method=RequestMethod.POST)
 		public Utilisateur save(@RequestBody Utilisateur p){
 			return utilisateurRepo.save(p);
 			
 		}
 
+		//Supprimer
 		@RequestMapping(value="/users/{id}",method=RequestMethod.DELETE)
 		public boolean supp(@PathVariable Long id){
 			utilisateurRepo.delete(id);
 			return true;
 		}
 		
+		//Mettre à jour
 		@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
 		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur p){
 			p.setId(id);
 			return utilisateurRepo.save(p);
 		}
+		
+		//Connexion utilisateur (utiliser dépendance Spring Security pour plus de sécurité)
+		@RequestMapping(value="/userconnexion", method=RequestMethod.POST)
+		public Utilisateur connexionUtilisateur(@RequestBody Utilisateur utilisateur) {
+			List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+			Utilisateur userConnect = new Utilisateur();
+			for (Utilisateur utilisateur2 : utilisateurs) {
+				if(utilisateur.getMail().equals(utilisateur2.getMail())&&(utilisateur.getMdp().equals(utilisateur2.getMdp()))){
+					userConnect = utilisateur2;
+				}
+			}
+			return userConnect;
+		}
+		
 	}
 
 

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+
 
 import fr.democrazik.dao.UtilisateurRepository;
 import fr.democrazik.entities.Utilisateur;
@@ -23,7 +23,7 @@ public class DemocrazikApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		utilisateurRepo.save(new Utilisateur ("Test", "Test","test","Test@test.fr" )); 
+//		utilisateurRepo.save(new Utilisateur ("Test", "Test","test","Test@test.fr" )); 
 		
 		
 		//findAll renvoie liste de tous les utilsateurs de la bd dans personneRepo		
