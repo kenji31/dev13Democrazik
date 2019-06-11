@@ -11,7 +11,7 @@ import fr.democrazik.dao.UtilisateurRepository;
 import fr.democrazik.entities.Utilisateur;
 
 @SpringBootApplication
-@ComponentScan(basePackages ={"fr.democrazik.dao"})
+
 public class DemocrazikApplication implements CommandLineRunner{
 	
 	@Autowired
