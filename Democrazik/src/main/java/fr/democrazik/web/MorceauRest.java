@@ -14,10 +14,15 @@ import fr.democrazik.entities.Morceau;
 public class MorceauRest {
 	@Autowired
 	private MorceauRepository morceauRepo;
+	
 	//Afficher tout
 	@RequestMapping(value="/morceaux",method=RequestMethod.GET)
 	public List<Morceau> getMorceaux(){
 		return morceauRepo.findAll();
 	}
+	
+	
+	
+	
 	
 }
