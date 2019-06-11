@@ -9,52 +9,46 @@ package fr.democrazik.web;
 	import org.springframework.web.bind.annotation.RequestMethod;
 	import org.springframework.web.bind.annotation.RestController;
 
+import fr.democrazik.dao.UtilisateurRepository;
 import fr.democrazik.entities.Utilisateur;
-import fr.democrazikDao.UtilisateurRepository;
-
-
-public class UtilisateursRest {
-	
-	
-	
 
 
 	@RestController
 	@CrossOrigin("*")
 
 
-	public class PersonneRest {
+	public class UtilisateurRest {
 		@Autowired
-		private UtilisateurRepository utilisateurRepos;
+		private UtilisateurRepository utilisateurRepo;
 		
 		@RequestMapping(value="/users",method=RequestMethod.GET)
 		public List<Utilisateur> getPersonnes(){
-			return utilisateurRepos.findAll();
+			return utilisateurRepo.findAll();
 		}
 		
 		@RequestMapping(value="/users/{id}",method=RequestMethod.GET)
 		public Utilisateur getPersonne(@PathVariable Long id){
-			return utilisateurRepos.findOne(id);
+			return utilisateurRepo.findOne(id);
 		}
 		
 		@RequestMapping(value="/user",method=RequestMethod.POST)
 		public Utilisateur save(@RequestBody Utilisateur p){
-			return utilisateurRepos.save(p);
+			return utilisateurRepo.save(p);
 			
 		}
 
 		@RequestMapping(value="/users/{id}",method=RequestMethod.DELETE)
 		public boolean supp(@PathVariable Long id){
-			utilisateurRepos.delete(id);
+			utilisateurRepo.delete(id);
 			return true;
 		}
 		
 		@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
 		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur p){
 			p.setId(id);
-			return utilisateurRepos.save(p);
+			return utilisateurRepo.save(p);
 		}
 	}
 
 
-}
+

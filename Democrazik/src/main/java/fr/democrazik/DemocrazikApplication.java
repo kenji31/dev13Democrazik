@@ -1,13 +1,17 @@
 package fr.democrazik;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-import fr.democrazikDao.UtilisateurRepository;
+import fr.democrazik.dao.UtilisateurRepository;
+import fr.democrazik.entities.Utilisateur;
 
 @SpringBootApplication
+@ComponentScan(basePackages ={"fr.democrazik.dao"})
 public class DemocrazikApplication implements CommandLineRunner{
 	
 	@Autowired
@@ -19,7 +23,12 @@ public class DemocrazikApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		utilisateurRepo.save(new Utilisateur ("Test", "Test","test","Test@test.fr" )); 
 		
+		
+		//findAll renvoie liste de tous les utilsateurs de la bd dans personneRepo		
+		utilisateurRepo.findAll().forEach(u -> {
+			System.out.println(u.getNom() + " " + u.getPrenom());
+		});
 	}
-
 }
