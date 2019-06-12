@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Artiste {
@@ -17,25 +17,24 @@ public class Artiste {
 	@Column(nullable = false)
 	private String nom;
 	
-	@ManyToOne
-	private Session session;
+
 	
 	
 	
 	
-		public Artiste(Long id, String nom, Session session) {
+		public Artiste(Long id, String nom) {
 		super();
 		this.id = id;
 		this.nom = nom;
-		this.session = session;
+		
 	}
 
 
 
-		public Artiste(String nom, Session session) {
+		public Artiste(String nom) {
 		super();
 		this.nom = nom;
-		this.session = session;
+		
 	}
 		
 		
@@ -62,13 +61,6 @@ public class Artiste {
 		this.nom = nom;
 	}
 
-	public Session getSession() {
-		return session;
-	}
 
-	public void setSession(Session session) {
-		this.session = session;
-	}
-	
 	
 }
