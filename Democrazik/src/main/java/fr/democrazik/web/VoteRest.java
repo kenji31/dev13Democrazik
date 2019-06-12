@@ -24,4 +24,6 @@ public class VoteRest {
 		public List<Vote> getVotes(){
 			return voteRepo.findAll();
 		}
+		
+		
 }
