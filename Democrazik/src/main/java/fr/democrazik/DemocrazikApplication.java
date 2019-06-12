@@ -128,7 +128,7 @@ sessionRepo.save (new Session ("3", "trois"));
 
 
 //Création Session BD
-morceauRepo.save (new Morceau(titre, null, genre, artiste));					
+//morceauRepo.save (new Morceau(titre, null, genre, artiste));					
 
 
 				//findAll renvoie liste des morceaux de la bd 
