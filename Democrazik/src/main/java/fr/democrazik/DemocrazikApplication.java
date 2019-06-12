@@ -17,6 +17,7 @@ import fr.democrazik.entities.Genre;
 import fr.democrazik.entities.Morceau;
 import fr.democrazik.entities.Session;
 import fr.democrazik.entities.Utilisateur;
+import fr.democrazik.entities.Vote;
 
 @SpringBootApplication
 
@@ -48,13 +49,16 @@ Utilisateur u3 = new Utilisateur ("Nico", "R","nico","nico@test.fr");
 Utilisateur u4 = new Utilisateur ("Marie", "B","marie","marie@test.fr");
 Utilisateur u5 = new Utilisateur ("Nath", "C","nath","nath@test.fr" );
 Utilisateur u6 = new Utilisateur ("Jo", "B","jo","jo@test.fr");
+Utilisateur u7 = new Utilisateur ("One", "Un","un","un@test.fr");
+Utilisateur u8 = new Utilisateur ("Two", "Deux","deux","deux@test.fr");
+Utilisateur u9 = new Utilisateur ("Three", "Trois","trois","trois@test.fr");
+Utilisateur u10 = new Utilisateur ("Four", "Quatre","quatre","quatre@test.fr");
+Utilisateur u11 = new Utilisateur ("Five", "Cinq","cinq","cinq@test.fr" );
+Utilisateur u12 = new Utilisateur ("Six", "Six","six","six@test.fr");
 
-utilisateurRepo.save(u1); 
-utilisateurRepo.save(u2); 
-utilisateurRepo.save(u3); 
-utilisateurRepo.save(u4); 
-utilisateurRepo.save(u5); 
-utilisateurRepo.save(u6);
+utilisateurRepo.save(u1); utilisateurRepo.save(u2); utilisateurRepo.save(u3); utilisateurRepo.save(u4); utilisateurRepo.save(u5); 
+utilisateurRepo.save(u6);utilisateurRepo.save(u7); utilisateurRepo.save(u8); utilisateurRepo.save(u9); utilisateurRepo.save(u10);
+utilisateurRepo.save(u11); utilisateurRepo.save(u12);
 
 
 //findAll renvoie liste de tous les utilsateurs de la bd dans personneRepo		
@@ -218,6 +222,27 @@ morceauRepo.save(m46); morceauRepo.save(m47); morceauRepo.save(m48);morceauRepo.
 				morceauRepo.findAll().forEach(m -> {
 					System.out.println(m.getId() + " " + m.getTitre() + " " + m.getArtiste().getNom() + " " + m.getGenre().getLibelle() + " " + m.getSession().getNom());
 				});
+				
+//Création Vote BD
+Vote v1 = new Vote(u1, m26);
+Vote v2 = new Vote (u2,m26);
+Vote v3 = new Vote (u3, m27);
+Vote v4 = new Vote (u4, m42);
+Vote v5 = new Vote (u5, m26);
+Vote v6 = new Vote (u6, m27);
+Vote v7 = new Vote (u7, m7);
+Vote v8 = new Vote (u8, m19);
+Vote v9 = new Vote (u9, m19);
+Vote v10 = new Vote (u10, m7);
+Vote v11= new Vote (u11, m31);
+Vote v12 = new Vote (u12, m38);
 
+voteRepo.save(v1); voteRepo.save(v2);voteRepo.save(v3);voteRepo.save(v4);voteRepo.save(v5);voteRepo.save(v6);voteRepo.save(v7);
+voteRepo.save(v8);voteRepo.save(v9);voteRepo.save(v10);voteRepo.save(v11);voteRepo.save(v12);
+
+				//findAll renvoie liste des votes de la bd 
+				voteRepo.findAll().forEach(v -> {
+					System.out.println(v.getId() + " " + v.getMorceau().getTitre() + " " + v.getUtilisateur().getNom());
+				});
 	}
 }
