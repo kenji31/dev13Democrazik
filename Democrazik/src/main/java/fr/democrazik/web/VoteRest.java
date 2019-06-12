@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import fr.democrazik.dao.VoteRepository;
-import fr.democrazik.entities.Utilisateur;
 import fr.democrazik.entities.Vote;
 
 @RestController
