@@ -3,12 +3,14 @@ package fr.democrazik.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.democrazik.dao.MorceauRepository;
 
 import fr.democrazik.entities.Morceau;
+
 
 
 public class MorceauRest {
@@ -21,7 +23,12 @@ public class MorceauRest {
 		return morceauRepo.findAll();
 	}
 	
-	
+	//Ajouter dans BD
+			@RequestMapping(value="/morceau",method=RequestMethod.POST)
+			public Morceau save(@RequestBody Morceau m){
+				return morceauRepo.save(m);
+				
+			}
 	
 	
 	
