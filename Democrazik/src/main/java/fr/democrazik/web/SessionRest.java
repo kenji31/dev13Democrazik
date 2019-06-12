@@ -51,9 +51,16 @@ public class SessionRest {
 				return sessionConnect;
 			}
 			
-			//Afficher en fonction nom
+			//Rechercher en fonction nom
 			@RequestMapping(value="/session/{nom}",method=RequestMethod.GET)
 			public List<Session> findSessionbyNom(@PathVariable String nom){
 				return sessionRepo.findSessionByNom(nom);
+			}
+			
+			//Supprimer
+			@RequestMapping(value="/sessions/{nom}",method=RequestMethod.DELETE)
+			public boolean supp(@PathVariable String nom){
+				sessionRepo.deleteSessionByNom(nom);
+				return true;
 			}
 }

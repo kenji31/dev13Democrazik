@@ -23,7 +23,7 @@ public class DemocrazikApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-//		utilisateurRepo.save(new Utilisateur ("Test", "Test","test","Test@test.fr" )); 
+utilisateurRepo.save(new Utilisateur ("Test", "Test","test","Test@test.fr" )); 
 		
 		
 		//findAll renvoie liste de tous les utilsateurs de la bd dans personneRepo		

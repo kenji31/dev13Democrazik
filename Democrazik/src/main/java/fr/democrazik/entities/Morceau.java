@@ -22,16 +22,12 @@ public class Morceau {
 	@ManyToOne
 	private Artiste artiste;
 	
-	public Morceau(Long id, String titre, Session session, Genre genre, Artiste artiste) {
+	private Long compte;
+
+	
+	public Morceau() {
 		super();
-		this.id = id;
-		this.titre = titre;
-		this.session = session;
-		this.genre = genre;
-		this.artiste = artiste;
 	}
-	
-	
 	
 	
 	public Morceau(String titre, Session session, Genre genre, Artiste artiste) {
@@ -42,14 +38,14 @@ public class Morceau {
 		this.artiste = artiste;
 	}
 	
-	
 
-
-	public Morceau() {
-		super();
+	public Long getCompte() {
+		return compte;
 	}
 
-
+	public void setCompte(Long compte) {
+		this.compte = compte;
+	}
 
 
 	public Long getId() {
