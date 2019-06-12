@@ -42,12 +42,20 @@ public class DemocrazikApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		//Création utilisateurs BD
-utilisateurRepo.save(new Utilisateur ("Test", "Test","test","Test@test.fr" )); 
-utilisateurRepo.save(new Utilisateur ("Antho", "T","antho","antho@test.fr" )); 
-utilisateurRepo.save(new Utilisateur ("Nico", "R","nico","nico@test.fr" )); 
-utilisateurRepo.save(new Utilisateur ("Marie", "B","marie","marie@test.fr" )); 
-utilisateurRepo.save(new Utilisateur ("Nath", "C","nath","nath@test.fr" )); 
-utilisateurRepo.save(new Utilisateur ("Jo", "B","jo","jo@test.fr" ));
+Utilisateur u1 = new Utilisateur ("Test", "Test","test","Test@test.fr");
+Utilisateur u2 = new Utilisateur ("Antho", "T","antho","antho@test.fr");
+Utilisateur u3 = new Utilisateur ("Nico", "R","nico","nico@test.fr");
+Utilisateur u4 = new Utilisateur ("Marie", "B","marie","marie@test.fr");
+Utilisateur u5 = new Utilisateur ("Nath", "C","nath","nath@test.fr" );
+Utilisateur u6 = new Utilisateur ("Jo", "B","jo","jo@test.fr");
+
+utilisateurRepo.save(u1); 
+utilisateurRepo.save(u2); 
+utilisateurRepo.save(u3); 
+utilisateurRepo.save(u4); 
+utilisateurRepo.save(u5); 
+utilisateurRepo.save(u6);
+
 
 //findAll renvoie liste de tous les utilsateurs de la bd dans personneRepo		
 utilisateurRepo.findAll().forEach(u -> {
@@ -128,7 +136,7 @@ sessionRepo.save (new Session ("3", "trois"));
 
 
 //Création Session BD
-morceauRepo.save (new Morceau(titre, null, genre, artiste));					
+//morceauRepo.save (new Morceau(titre, null, genre, artiste));					
 
 
 				//findAll renvoie liste des morceaux de la bd 
