@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import fr.democrazik.dao.VoteRepository;
+import fr.democrazik.entities.Utilisateur;
 import fr.democrazik.entities.Vote;
 
 @RestController
@@ -37,6 +38,20 @@ public class VoteRest {
 		@RequestMapping(value="/votes/{id}",method=RequestMethod.DELETE)
 		public boolean supp(@PathVariable Long id){
 			voteRepo.delete(id);
+			return true;
+		}
+		
+		//Suppression vote (fonction de Utilisateur et morceau)
+		@RequestMapping(value="/deleteVote", method=RequestMethod.POST)
+		public boolean deleteVote(@RequestBody Vote vote) {
+			List<Vote> votes = voteRepo.findAll();
+			Vote voteDelete = new Vote();
+			for (Vote vote2 : votes) {
+				if(vote.getUtilisateur().getId()==vote2.getUtilisateur().getId() &&(vote.getMorceau().getId()==vote2.getMorceau().getId())){
+					voteDelete = vote2;
+					voteRepo.delete(vote2);
+				}
+			}
 			return true;
 		}
 		
