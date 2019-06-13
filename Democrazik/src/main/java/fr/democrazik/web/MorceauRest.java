@@ -50,6 +50,12 @@ public class MorceauRest {
 				return morceauxById;
 			}
 			
+			
+			
+			
+			
+			
+		//---------------------------CERTIFIED WORKING METHOD--------------666--------------------------------	
 			@RequestMapping(value="/morceau-ordre/{id}",method=RequestMethod.GET)
 			public List<Object[]> orderMorceauBySession(@PathVariable Long id){
 				
@@ -64,25 +70,30 @@ public class MorceauRest {
 				return liste;
 			}
 			
-			@RequestMapping(value="/morceau-ordre",method=RequestMethod.GET)
-			public List<Object[]> orderMorceauBySession(){			
-				return morceauRepo.orderMorceauByVote();
-			}
-	
-			@RequestMapping(value="/morceau-ordre2",method=RequestMethod.GET)
-			public List<Object[]> orderMorceauBySession2(){
-				
-				List<Object[]> liste2 = morceauRepo.orderMorceauByVote();
-				List<Object[]> liste= new ArrayList<Object[]>();
-				for (Object[] c : liste2) {
-					liste.add(c);
-				}
-								
-				return liste;
-			}
+		//------------------------------------------------------------------------------------------------	
+					
+			// cette methode renvoie 2 listes
+			// il faudra faire un outer join des morceaux de la session et des morceaux de listeM
+//			@RequestMapping(value="/morceau-avec-vote/{id}",method=RequestMethod.GET)
+//			public List<Object[]> morceauWithVote(@PathVariable Long id){
+//				
+//				List<Object[]> liste2 = morceauRepo.orderMorceauByVote();
+//				List<Object[]> listeOb= new ArrayList<Object[]>();
+//				List<Morceau> listeM= new ArrayList<Morceau>();
+//				for (Object[] c : liste2) {
+//					if(((Vote) c[0]).getMorceau().getSession().getId()==id) {
+//						listeM.add(((Vote)c[0]).getMorceau());
+//						listeOb.add(c);
+//				}
+//								
+//				return liste;
+//			}
 			
+			
+			
+	// -------- Methode non utile -------------------------		
 			@RequestMapping(value="/morceau-ordre-vote",method=RequestMethod.GET)
-			public List<Vote> orderMorceauBySession3(){
+			public List<Vote> orderVoteBySession(){
 				
 				List<Object[]> liste2 = morceauRepo.orderMorceauByVote();
 				List<Vote> liste= new ArrayList<Vote>();
