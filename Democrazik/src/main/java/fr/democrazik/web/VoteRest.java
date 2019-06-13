@@ -56,7 +56,7 @@ public class VoteRest {
 		}
 		
 		
-		//Rechercher en fonction User --> OK
+		//Rechercher en fonction Utilisateur --> OK
 		@RequestMapping(value="/vote/utilisateur/{id}",method=RequestMethod.GET)
 		public List<Vote> getVotebyUser(@PathVariable Long id){
 			List <Vote> voteByUtilisateur = new ArrayList<Vote>();

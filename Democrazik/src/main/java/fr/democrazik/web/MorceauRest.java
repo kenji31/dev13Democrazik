@@ -36,7 +36,7 @@ public class MorceauRest {
 				
 			}
 	
-			//Rechercher en fonction session
+			//Rechercher en fonction session --> OK
 			@RequestMapping(value="/morceau/session/{id}",method=RequestMethod.GET)
 			public List<Morceau> getMorceaubySession(@PathVariable Long id){
 				List <Morceau> morceauxById = new ArrayList<Morceau>();
