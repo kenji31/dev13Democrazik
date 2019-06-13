@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Morceau {
-
+  
 	@Id @GeneratedValue
 	private Long id;
 	
@@ -21,7 +21,7 @@ public class Morceau {
 	private Genre genre;
 	@ManyToOne
 	private Artiste artiste;
-	
+	 
 	private Long compte;
 
 	
