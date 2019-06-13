@@ -10,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Table(uniqueConstraints= @UniqueConstraint(columnNames={"utilisateur_id", "morceau_id"}) )
 
 
@@ -21,12 +24,14 @@ public class Vote {
 	
 
 	@ManyToOne
+	
 	@JoinColumn(name = "utilisateur_id")
 	private Utilisateur utilisateur;
 	
 	
 	@ManyToOne
 	@JoinColumn(name = "morceau_id")
+
 	private Morceau morceau;
 	
 	
