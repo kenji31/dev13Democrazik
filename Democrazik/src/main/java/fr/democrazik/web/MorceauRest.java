@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.democrazik.dao.MorceauRepository;
-import fr.democrazik.entities.Collection;
 import fr.democrazik.entities.Morceau;
 import fr.democrazik.entities.Vote;
 
