@@ -230,7 +230,7 @@ Vote v9 = new Vote (u9, m19);
 Vote v10 = new Vote (u10, m7);
 Vote v11= new Vote (u11, m31);
 Vote v12 = new Vote (u12, m38);
-Vote v13 = new Vote (u12, m26);
+Vote v13 = new Vote (u12, m32);
 
 voteRepo.save(v1); voteRepo.save(v2);voteRepo.save(v3);voteRepo.save(v4);voteRepo.save(v5);voteRepo.save(v6);voteRepo.save(v7);
 voteRepo.save(v8);voteRepo.save(v9);voteRepo.save(v10);voteRepo.save(v11);voteRepo.save(v12);voteRepo.save(v13);
