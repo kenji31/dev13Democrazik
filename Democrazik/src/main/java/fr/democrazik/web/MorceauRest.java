@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.democrazik.dao.MorceauRepository;
-
+import fr.democrazik.entities.Collection;
 import fr.democrazik.entities.Morceau;
-import fr.democrazik.entities.Session;
+import fr.democrazik.entities.Vote;
 
 
 @RestController
@@ -50,7 +50,48 @@ public class MorceauRest {
 				}
 				return morceauxById;
 			}
+			
+			@RequestMapping(value="/morceau-ordre/{id}",method=RequestMethod.GET)
+			public List<Object[]> orderMorceauBySession(@PathVariable Long id){
+				
+				List<Object[]> liste2 = morceauRepo.orderMorceauByVote();
+				List<Object[]> liste= new ArrayList<Object[]>();
+				for (Object[] c : liste2) {
+						if(((Vote) c[0]).getMorceau().getSession().getId()==id) {
+						liste.add(c);
+						}
+				}
+								
+				return liste;
+			}
+			
+			@RequestMapping(value="/morceau-ordre",method=RequestMethod.GET)
+			public List<Object[]> orderMorceauBySession(){			
+				return morceauRepo.orderMorceauByVote();
+			}
 	
-	
+			@RequestMapping(value="/morceau-ordre2",method=RequestMethod.GET)
+			public List<Object[]> orderMorceauBySession2(){
+				
+				List<Object[]> liste2 = morceauRepo.orderMorceauByVote();
+				List<Object[]> liste= new ArrayList<Object[]>();
+				for (Object[] c : liste2) {
+					liste.add(c);
+				}
+								
+				return liste;
+			}
+			
+			@RequestMapping(value="/morceau-ordre-vote",method=RequestMethod.GET)
+			public List<Vote> orderMorceauBySession3(){
+				
+				List<Object[]> liste2 = morceauRepo.orderMorceauByVote();
+				List<Vote> liste= new ArrayList<Vote>();
+				for (Object[] c : liste2) {
+					liste.add((Vote)c[0]);
+				}
+								
+				return liste;
+			}
 	
 }
