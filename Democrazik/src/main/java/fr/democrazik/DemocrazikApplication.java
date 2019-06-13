@@ -52,19 +52,31 @@ utilisateurRepo.deleteAll();
 artisteRepo.deleteAll();
 genreRepo.deleteAll();
 sessionRepo.deleteAll();
+
+//Création Session BD
+
+Session s1 = new Session ("Test", "test");									
+Session s2 = new Session("La Boum", "123456789");
+Session s3 = new Session ("1", "un");
+Session s4 = new Session ("2", "deux");
+Session s5 = new Session ("3", "trois");
+
+sessionRepo.save(s1); sessionRepo.save(s2); sessionRepo.save(s3); sessionRepo.save(s4); sessionRepo.save(s5);
+
+
 		
-Utilisateur u1 = new Utilisateur ("Test", "Test","test","Test@test.fr");
-Utilisateur u2 = new Utilisateur ("Antho", "T","antho","antho@test.fr");
-Utilisateur u3 = new Utilisateur ("Nico", "R","nico","nico@test.fr");
-Utilisateur u4 = new Utilisateur ("Marie", "B","marie","marie@test.fr");
-Utilisateur u5 = new Utilisateur ("Nath", "C","nath","nath@test.fr" );
-Utilisateur u6 = new Utilisateur ("Jo", "B","jo","jo@test.fr");
-Utilisateur u7 = new Utilisateur ("One", "Un","un","un@test.fr");
-Utilisateur u8 = new Utilisateur ("Two", "Deux","deux","deux@test.fr");
-Utilisateur u9 = new Utilisateur ("Three", "Trois","trois","trois@test.fr");
-Utilisateur u10 = new Utilisateur ("Four", "Quatre","quatre","quatre@test.fr");
-Utilisateur u11 = new Utilisateur ("Five", "Cinq","cinq","cinq@test.fr" );
-Utilisateur u12 = new Utilisateur ("Six", "Six","six","six@test.fr");
+Utilisateur u1 = new Utilisateur ("Test", "Test","test","Test@test.fr", s2);
+Utilisateur u2 = new Utilisateur ("Antho", "T","antho","antho@test.fr", s2);
+Utilisateur u3 = new Utilisateur ("Nico", "R","nico","nico@test.fr", s2);
+Utilisateur u4 = new Utilisateur ("Marie", "B","marie","marie@test.fr", s2);
+Utilisateur u5 = new Utilisateur ("Nath", "C","nath","nath@test.fr", s2 );
+Utilisateur u6 = new Utilisateur ("Jo", "B","jo","jo@test.fr", s2);
+Utilisateur u7 = new Utilisateur ("One", "Un","un","un@test.fr", s1);
+Utilisateur u8 = new Utilisateur ("Two", "Deux","deux","deux@test.fr", s1);
+Utilisateur u9 = new Utilisateur ("Three", "Trois","trois","trois@test.fr", s1);
+Utilisateur u10 = new Utilisateur ("Four", "Quatre","quatre","quatre@test.fr", s1);
+Utilisateur u11 = new Utilisateur ("Five", "Cinq","cinq","cinq@test.fr", s1 );
+Utilisateur u12 = new Utilisateur ("Six", "Six","six","six@test.fr", s1);
 
 utilisateurRepo.save(u1); utilisateurRepo.save(u2); utilisateurRepo.save(u3); utilisateurRepo.save(u4); utilisateurRepo.save(u5); 
 utilisateurRepo.save(u6);utilisateurRepo.save(u7); utilisateurRepo.save(u8); utilisateurRepo.save(u9); utilisateurRepo.save(u10);
@@ -100,7 +112,7 @@ Artiste a24 = new Artiste ("Led Zepelin");
 Artiste a25 = new Artiste ("Édith Piaf");
 Artiste a26 = new Artiste ("Britney Spears");
 Artiste a27 = new Artiste ("Public Enemy");
-Artiste a28 = new Artiste ("Emineme");
+Artiste a28 = new Artiste ("Eminem");
 
 
 artisteRepo.save(a1);artisteRepo.save(a2); artisteRepo.save(a3); artisteRepo.save(a4); artisteRepo.save(a5); artisteRepo.save(a6); 
@@ -141,16 +153,6 @@ genreRepo.save(g19);
 
 
 				
-		//Création Session BD
-				
-Session s1 = new Session ("Test", "test");									
-Session s2 = new Session("La Boum", "123456789");
-Session s3 = new Session ("1", "un");
-Session s4 = new Session ("2", "deux");
-Session s5 = new Session ("3", "trois");
-
-sessionRepo.save(s1); sessionRepo.save(s2); sessionRepo.save(s3); sessionRepo.save(s4); sessionRepo.save(s5);
-
 
 
 //Création Session BD
