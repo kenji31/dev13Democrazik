@@ -25,6 +25,13 @@ public class Session {
 		this.nom = nom;
 		this.code = code;
 	}
+	
+	public Session(Long id, String nom, String code) {
+		super();
+		this.id=id;
+		this.nom = nom;
+		this.code = code;
+	}
 
 	public Long getId() {
 		return id;
