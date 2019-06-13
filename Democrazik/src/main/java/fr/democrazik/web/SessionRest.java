@@ -57,7 +57,7 @@ public class SessionRest {
 				return sessionRepo.findSessionByNom(nom);
 			}
 			
-			//Supprimer en fonction
+			//Supprimer en fonction ID
 			@RequestMapping(value="/sessions/{id}",method=RequestMethod.DELETE)
 			public boolean supp(@PathVariable Long id){
 				sessionRepo.delete(id);
