@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,13 @@ public class GenreRest {
 			public Genre save(@RequestBody Genre g){
 				return genreRepo.save(g);
 				
+			}
+			
+			//Supprimer
+			@RequestMapping(value="/genres/{id}",method=RequestMethod.DELETE)
+			public boolean supp(@PathVariable Long id){
+				genreRepo.delete(id);
+				return true;
 			}
 	
 }

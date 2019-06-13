@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Utilisateur {
 	
@@ -26,6 +29,7 @@ public class Utilisateur {
 	private String mail;
 	
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Session session;
 	
 	
@@ -39,6 +43,15 @@ public class Utilisateur {
 		this.prenom = prenom;
 		this.mdp = mdp;
 		this.mail = mail;
+	}
+	
+	public Utilisateur(String nom, String prenom, String mdp, String mail, Session session) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mdp = mdp;
+		this.mail = mail;
+		this.session = session;
 	}
 
 	public Long getId() {

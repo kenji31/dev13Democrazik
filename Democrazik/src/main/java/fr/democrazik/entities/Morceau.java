@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Morceau {
   
@@ -16,10 +19,13 @@ public class Morceau {
 	private String titre;
 	
 	@ManyToOne
+
 	private Session session;
 	@ManyToOne
+
 	private Genre genre;
 	@ManyToOne
+
 	private Artiste artiste;
 	 
 	private Long compte;
