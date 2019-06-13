@@ -34,7 +34,7 @@ import fr.democrazik.entities.Utilisateur;
 		public Utilisateur getPersonne(@PathVariable Long id){
 			return utilisateurRepo.findOne(id);
 		}
-		
+	
 		
 		//Ajouter dans BD
 		@RequestMapping(value="/user",method=RequestMethod.POST)
