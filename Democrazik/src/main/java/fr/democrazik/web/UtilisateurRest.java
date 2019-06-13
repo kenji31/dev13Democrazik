@@ -57,7 +57,7 @@ import fr.democrazik.entities.Utilisateur;
 			return utilisateurRepo.save(p);
 		}
 		
-		//Connexion utilisateur (utiliser dépendance Spring Security pour plus de sécurité)
+		//Connexion utilisateur (utiliser dépendance Spring Security pour plus de sécurité) --> OK
 		@RequestMapping(value="/userconnexion", method=RequestMethod.POST)
 		public Utilisateur connexionUtilisateur(@RequestBody Utilisateur utilisateur) {
 			List<Utilisateur> utilisateurs = utilisateurRepo.findAll();

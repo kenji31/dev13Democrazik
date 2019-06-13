@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import fr.democrazik.entities.Morceau;
+import fr.democrazik.entities.Session;
 
 
 public interface MorceauRepository extends JpaRepository<Morceau, Long> {
@@ -19,4 +20,6 @@ public interface MorceauRepository extends JpaRepository<Morceau, Long> {
 //	List<Object[]> orderMorceauByVote();
 //	
 
+	public List<Morceau> findMorceauBySession(Session session);
+	
 }

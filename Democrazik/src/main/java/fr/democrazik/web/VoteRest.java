@@ -1,5 +1,6 @@
 package fr.democrazik.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import fr.democrazik.dao.VoteRepository;
+import fr.democrazik.entities.Morceau;
 import fr.democrazik.entities.Utilisateur;
 import fr.democrazik.entities.Vote;
 
@@ -54,6 +56,22 @@ public class VoteRest {
 //			}
 //			return true;
 //		}
+		
+		
+		//Rechercher en fonction User --> OK
+		@RequestMapping(value="/vote/utilisateur/{id}",method=RequestMethod.GET)
+		public List<Vote> getVotebyUser(@PathVariable Long id){
+			List <Vote> voteByUtilisateur = new ArrayList<Vote>();
+			List <Vote>  allVotes = voteRepo.findAll();
+			Vote voteFind = new Vote();
+			for (Vote votes : allVotes) {
+				if ((votes.getUtilisateur().getId()==id)) {
+					voteFind=votes;
+					voteByUtilisateur.add(voteFind);
+				}
+			}
+			return voteByUtilisateur;
+		}
 		
 		
 }
