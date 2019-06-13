@@ -72,7 +72,7 @@ public class SessionRest {
 		return sessionRepo.findSessionByNom(nom);
 	}
 
-	// Supprimer en fonction ID
+	// Supprimer en fonction ID --> OK
 
 	@RequestMapping(value = "/sessions/{id}", method = RequestMethod.DELETE)
 	public boolean supp(@PathVariable Long id) {
@@ -82,12 +82,12 @@ public class SessionRest {
 
 		for (Vote voteListe : votes) {
 			
-			if (voteListe.getMorceau().getSession().getId() == id) {
+			if (voteListe.getMorceau().getSession().getId() == id) { //suppression d'abord des votes de la session (sinon pb dépendance) Possibilité p-ê d'utiliser suppression en cascade mais n'a pas marché
 				voteRepo.delete(voteListe.getId());
 			}
 		
 		}
-		List<Morceau> morceaux = morceauRepo.findAll();
+		List<Morceau> morceaux = morceauRepo.findAll(); //suppression des morceaux de la session
 
 		for (Morceau morceauListe : morceaux) {
 			if (morceauListe.getSession().getId()!=null) {
@@ -97,7 +97,7 @@ public class SessionRest {
 		}
 		}
 		
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+		List<Utilisateur> utilisateurs = utilisateurRepo.findAll(); //set Session des Utilisateurs à 'null' pour ne pas les supprimer (sinon besoin de se réinscrire pour se connecter) 
 		for (Utilisateur utilisateurListe : utilisateurs) {
 			if (utilisateurListe.getSession()!=null) {
 			if (utilisateurListe.getSession().getId() == id) {
