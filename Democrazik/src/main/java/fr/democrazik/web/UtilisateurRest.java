@@ -70,6 +70,17 @@ import fr.democrazik.entities.Utilisateur;
 			return userConnect;
 		}
 		
+		//Deconnexion utilisateur --> OK
+		@RequestMapping(value="/userdeconnexion/{id}", method=RequestMethod.POST)
+		public Utilisateur deconnexionUtilisateur(@PathVariable Long id) {
+			Utilisateur utilisateur = utilisateurRepo.findOne(id);
+			utilisateur.setSession(null);
+			utilisateurRepo.save(utilisateur);
+			return utilisateur;
+				}
+			
+		
+		
 	}
 
 
