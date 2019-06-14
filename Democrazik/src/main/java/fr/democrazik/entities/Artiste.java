@@ -14,13 +14,9 @@ public class Artiste {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(unique = true, nullable=false)
 	private String nom;
-	
 
-	
-	
-	
 	
 		public Artiste(Long id, String nom) {
 		super();
@@ -28,8 +24,6 @@ public class Artiste {
 		this.nom = nom;
 		
 	}
-
-
 
 		public Artiste(String nom) {
 		super();

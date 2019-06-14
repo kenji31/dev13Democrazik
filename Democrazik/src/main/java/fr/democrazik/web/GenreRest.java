@@ -30,8 +30,13 @@ public class GenreRest {
 	//Ajouter dans BD
 			@RequestMapping(value="/genre",method=RequestMethod.POST)
 			public Genre save(@RequestBody Genre g){
-				return genreRepo.save(g);
-				
+				List<Genre> stock = genreRepo.findGenreByLibelle(g.getLibelle());
+				if (stock.isEmpty()) {
+					return genreRepo.save(g);
+				}
+				else {
+					return stock.get(0);
+				}
 			}
 			
 			//Supprimer
