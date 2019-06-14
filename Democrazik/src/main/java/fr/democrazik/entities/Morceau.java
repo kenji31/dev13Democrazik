@@ -37,6 +37,13 @@ public class Morceau {
 		super();
 	}
 	
+	public Morceau(String titre, Session session, Genre genre, Artiste artiste) {
+		super();
+		this.titre = titre;
+		this.session = session;
+		this.genre = genre;
+		this.artiste = artiste;
+	}
 	
 	public Morceau(String titre, Session session, Genre genre, Artiste artiste, String chemin) {
 		super();
