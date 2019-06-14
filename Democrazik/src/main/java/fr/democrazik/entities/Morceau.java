@@ -29,12 +29,13 @@ public class Morceau {
 	private Artiste artiste;
 	
 	private Long compte;
+	
+	private String chemin;
 
 	
 	public Morceau() {
 		super();
 	}
-	
 	
 	public Morceau(String titre, Session session, Genre genre, Artiste artiste) {
 		super();
@@ -44,6 +45,25 @@ public class Morceau {
 		this.artiste = artiste;
 	}
 	
+	public Morceau(String titre, Session session, Genre genre, Artiste artiste, String chemin) {
+		super();
+		this.titre = titre;
+		this.session = session;
+		this.genre = genre;
+		this.artiste = artiste;
+		this.chemin = chemin;
+	}
+	
+
+	public String getChemin() {
+		return chemin;
+	}
+
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
 
 	public Long getCompte() {
 		return compte;

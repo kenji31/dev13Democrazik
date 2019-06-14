@@ -12,5 +12,5 @@ import fr.democrazik.entities.Session;
 
 public interface ArtisteRepository extends JpaRepository<Artiste, Long>{
 
-	public Artiste findArtisteByNom(String nom);
+	public List<Artiste> findArtisteByNom(String nom);
 }
