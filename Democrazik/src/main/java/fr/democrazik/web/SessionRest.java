@@ -54,13 +54,16 @@ public class SessionRest {
 	}
 
 	// Connexion session
-	@RequestMapping(value = "/sessionconnexion", method = RequestMethod.POST)
-	public Session connexionSession(@RequestBody Session session) {
+	@RequestMapping(value = "/sessionconnexion/{id}", method = RequestMethod.POST)
+	public Session connexionSession(@PathVariable Long id, @RequestBody Session session) {
 		List<Session> sessions = sessionRepo.findAll();
 		Session sessionConnect = new Session();
 		for (Session session2 : sessions) {
 			if (session.getNom().equals(session2.getNom()) && (session.getCode().equals(session2.getCode()))) {
 				sessionConnect = session2;
+				Utilisateur utilisateur = utilisateurRepo.findOne(id);
+				utilisateur.setSession(sessionConnect);
+				utilisateurRepo.save(utilisateur);
 			}
 		}
 		return sessionConnect;
