@@ -36,13 +36,31 @@ import fr.democrazik.entities.Utilisateur;
 		}
 	
 		
-		//Ajouter dans BD
-		@RequestMapping(value="/user",method=RequestMethod.POST)
-		public Utilisateur save(@RequestBody Utilisateur p){
-			return utilisateurRepo.save(p);
-			
-		}
-
+//		//Ajouter dans BD
+//		@RequestMapping(value="/user",method=RequestMethod.POST)
+//		public Utilisateur save(@RequestBody Utilisateur p){
+//		
+//				return utilisateurRepo.save(p);
+//			
+//		}
+		
+		//Ajouter dans BD (vérifier si mail déjà existant)
+				@RequestMapping(value="/user",method=RequestMethod.POST)
+				public Utilisateur save(@RequestBody Utilisateur p){
+				List<Utilisateur> allUser = utilisateurRepo.findAll();
+				Utilisateur mailIdentique=new Utilisateur("Mail inexistant", "", "", "");
+				for (Utilisateur user : allUser) {
+					if(p.getMail().equals(user.getMail())) {
+					mailIdentique.setNom("Mail existant");
+				}
+				}
+				if (mailIdentique.getNom().equals("Mail inexistant")) {
+					return utilisateurRepo.save(p); //si mail inexistant dans BD, renvoyer données utilisateur qui vient de s'inscrire
+				} else {
+					return mailIdentique; //si mail existant, renvoyer un utilistaeur dont le nom est "Mail existant" (condition dans front)
+				}
+				}
+		
 		//Supprimer
 		@RequestMapping(value="/users/{id}",method=RequestMethod.DELETE)
 		public boolean supp(@PathVariable Long id){
