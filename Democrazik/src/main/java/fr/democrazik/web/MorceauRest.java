@@ -35,6 +35,11 @@ public class MorceauRest {
 				
 			}
 	
+			@RequestMapping(value="/morceau-rdm/{id}",method=RequestMethod.GET)
+			public String save(@PathVariable Long id){
+				return getRandomCheminMorceauOfSession(id);	
+			}
+	
 			//Rechercher en fonction session --> OK
 			@RequestMapping(value="/morceau/session/{id}",method=RequestMethod.GET)
 			public List<Morceau> getMorceaubySession(@PathVariable Long id){
