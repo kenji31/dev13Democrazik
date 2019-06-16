@@ -106,6 +106,16 @@ public class SessionRest {
 				}
 			}
 		}
+		
+		List<Long> idUselessArtists = artistRepo.idOfUselessArtists();
+		for (Long id : idUselessArtists) {
+			artisteRepo.delete(id);
+		}
+		List<Long> idUselessGenres = genreRepo.idOfUselessGenres();
+		for (Long id : idUselessGenres) {
+			genreRepo.delete(id);
+		}
+		
 		sessionRepo.delete(id);
 		return true;
 
