@@ -28,8 +28,6 @@ public class Morceau {
 
 	private Artiste artiste;
 	
-	private Long compte;
-	
 	private String chemin;
 
 	
@@ -63,16 +61,6 @@ public class Morceau {
 	public void setChemin(String chemin) {
 		this.chemin = chemin;
 	}
-
-
-	public Long getCompte() {
-		return compte;
-	}
-
-	public void setCompte(Long compte) {
-		this.compte = compte;
-	}
-
 
 	public Long getId() {
 		return id;
