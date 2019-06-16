@@ -112,5 +112,11 @@ public class SessionRest {
 		return true;
 
 	}
+	
+	@RequestMapping(value = "/session/{id}", method = RequestMethod.DELETE)
+	public boolean supp(@PathVariable Long id) {
+		sessionRepo.delete(id);
+		return true;
+	}
 }
 
