@@ -45,7 +45,7 @@ public class MorceauRest {
 						break;
 					}
 				}
-				if (chemin==null){
+				if (morceau==null){
 					morceau = getRandomMorceauOfSession(id);
 				}
 								
