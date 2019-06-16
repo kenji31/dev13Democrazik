@@ -59,10 +59,10 @@ public class MorceauRest {
 				List <Morceau>  allMorceaux = morceauRepo.findAll();
 				Morceau morceauFind = new Morceau();
 				for (Morceau morceaux : allMorceaux) { //comparaison chaque éléments de la liste allMorceaux
-					if ((morceaux.getSession().getId()==id)) {
-						morceauFind=morceaux;
-						morceauxById.add(morceauFind);
-					}
+						if ((morceaux.getSession().getId()==id)) {
+							morceauFind=morceaux;
+							morceauxById.add(morceauFind);
+						}
 				}
 				return morceauxById;
 			}
