@@ -93,19 +93,17 @@ public class SessionRest {
 		List<Morceau> morceaux = morceauRepo.findAll(); //suppression des morceaux de la session
 
 		for (Morceau morceauListe : morceaux) {
-			if (morceauListe.getSession().getId()!=null) {
 			if (morceauListe.getSession().getId() == id) {
 				morceauRepo.delete(morceauListe.getId());
 			}
-		}
 		}
 		
 		List<Utilisateur> utilisateurs = utilisateurRepo.findAll(); //set Session des Utilisateurs à 'null' pour ne pas les supprimer (sinon besoin de se réinscrire pour se connecter) 
 		for (Utilisateur utilisateurListe : utilisateurs) {
 			if (utilisateurListe.getSession()!=null) {
-			if (utilisateurListe.getSession().getId() == id) {
-				utilisateurListe.setSession(null);
-			}
+				if (utilisateurListe.getSession().getId() == id) {
+					utilisateurListe.setSession(null);
+				}
 			}
 		}
 		sessionRepo.delete(id);
