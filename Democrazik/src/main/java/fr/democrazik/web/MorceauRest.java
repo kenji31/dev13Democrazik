@@ -36,20 +36,20 @@ public class MorceauRest {
 			}
 	
 			@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
-			public String nextChemin(@PathVariable Long id){
+			public Morceau nextMorceau(@PathVariable Long id){
 				List<Object[]> liste = morceauRepo.getPopulaire();
-				String chemin=null;
+				String morceau=null;
 				for (Object[] c : liste) {
 					if(c[1]==id){
-						chemin=c[0];
+						morceau=c[0];
 						break;
 					}
 				}
 				if (chemin==null){
-					chemin = getRandomCheminMorceauOfSession(id);
+					morceau = getRandomMorceauOfSession(id);
 				}
 								
-				return chemin;
+				return morceau;
 			}
 	
 			//Rechercher en fonction session --> OK
