@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.democrazik.dao.ArtisteRepository;
 
 import fr.democrazik.entities.Artiste;
+import fr.democrazik.entities.Genre;
 import fr.democrazik.entities.Session;
 
 @RestController
@@ -32,14 +33,26 @@ public class ArtisteRest {
 	//Ajouter dans BD
 			@RequestMapping(value="/artiste",method=RequestMethod.POST)
 			public Artiste save(@RequestBody Artiste a){
-				return artisteRepo.save(a);
-				
+				List<Artiste> stock = artisteRepo.findArtisteByNom(a.getNom());
+				if (stock.isEmpty()) {
+					return artisteRepo.save(a);
+				}
+				else {
+					return stock.get(0);
+				}
 			}
 			
 			//Rechercher en fonction nom
 			@RequestMapping(value="/artistes/{nom}",method=RequestMethod.GET)
 			public Artiste findArtistebyNom(@PathVariable String nom){
-				return artisteRepo.findArtisteByNom(nom);
-			}	
+				List<Artiste> stock = artisteRepo.findArtisteByNom(nom);
+				if (stock.isEmpty()) {
+					Artiste a = new Artiste();
+					return a;
+				}
+				else {
+					return stock.get(0);
+				}
+			}
 	
 }
