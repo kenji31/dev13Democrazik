@@ -2,8 +2,6 @@ package fr.democrazik.web;
 
 import java.util.List;
 
-import javax.persistence.PreRemove;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -107,22 +105,25 @@ public class SessionRest {
 			}
 		}
 		
-//		List<Long> idUselessArtists = artistRepo.idOfUselessArtists();
-//		for (Long id : idUselessArtists) {
-//			artisteRepo.delete(id);
-//		}
-//		List<Long> idUselessGenres = genreRepo.idOfUselessGenres();
-//		for (Long id : idUselessGenres) {
-//			genreRepo.delete(id);
-//		}
-//		
+
+		List<Long> idUselessArtists = artisteRepo.idOfUselessArtists();
+		for (Long idArt : idUselessArtists) {
+			artisteRepo.delete(idArt);
+		}
+		List<Long> idUselessGenres = genreRepo.idOfUselessGenres();
+		for (Long idGenre : idUselessGenres) {
+			genreRepo.delete(idGenre);
+		}
+		
 		sessionRepo.delete(id);
 		return true;
 
 	}
 	
 	@RequestMapping(value = "/session/{id}", method = RequestMethod.DELETE)
-	public boolean suppByID(@PathVariable Long id) {
+
+	public boolean supprime(@PathVariable Long id) {
+
 		sessionRepo.delete(id);
 		return true;
 	}
