@@ -37,6 +37,7 @@ public class MorceauRest {
 				
 			}
 	
+
 			@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
 			public Morceau nextMorceau(@PathVariable Long id){
 				List<Object[]> liste = morceauRepo.getPopulaire();
@@ -53,6 +54,7 @@ public class MorceauRest {
 								
 				return morceau;
 			}
+
 	
 			//Rechercher en fonction session --> OK
 			@RequestMapping(value="/morceau/session/{id}",method=RequestMethod.GET)

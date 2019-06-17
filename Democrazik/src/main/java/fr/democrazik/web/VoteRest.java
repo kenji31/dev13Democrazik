@@ -43,13 +43,19 @@ public class VoteRest {
 			return true;
 		}
 		
-		//Suppression vote (fonction de Utilisateur et morceau)
-		@RequestMapping(value="/deleteVote", method=RequestMethod.POST)
-		public boolean deleteVote(@RequestBody Vote vote) {
+		//Suppression vote (fonction de Utilisateur et morceau) --> pas testé
+		@RequestMapping(value="/deleteVote/{id1}/{id2}", method=RequestMethod.DELETE)
+		public boolean deleteVote(@PathVariable Long id1, Long id2) {
+			Vote voteSupp= new Vote();
 			List<Vote> votes = voteRepo.findAll();
-			for (Vote vote2 : votes) {
-				if(vote.getUtilisateur().getId()==vote2.getUtilisateur().getId() &&(vote.getMorceau().getId()==vote2.getMorceau().getId())){
-					voteRepo.delete(vote2);
+			for (Vote vote : votes) {
+				if(vote.getUtilisateur().getId()==id1 && vote.getMorceau().getId()==id2){
+					voteSupp=vote;
+					voteRepo.delete(voteSupp.getId());
+					return true;
+				} else {
+					
+					return false;
 				}
 			}
 			return true;

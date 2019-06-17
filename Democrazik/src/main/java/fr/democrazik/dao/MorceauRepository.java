@@ -20,9 +20,10 @@ public interface MorceauRepository extends JpaRepository<Morceau, Long> {
 	
 	@Query(value ="SELECT * FROM Morceau WHERE session_id=?1 ORDER BY RAND() LIMIT 1", nativeQuery=true) // id_session ou session_id ?
 	public List<Morceau> getRandomMorceauOfSession(Long id);
+
 	
 	
-	//@Query(value ="SELECT * FROM (SELECT * FROM morceau WHERE session_id=?1 ORDER BY dbms_random.value) WHERE rownum =1", nativeQuery=true) // id_session ou session_id ?
+	//@Query(value ="SELECT * FROM (SELECT * FROM morceau WHERE session_id=?1 uORDER BY dbms_random.vale) WHERE rownum =1", nativeQuery=true) // id_session ou session_id ?
 	//public List<Morceau> getRandomMorceauOfSession(Long id);
 }
  

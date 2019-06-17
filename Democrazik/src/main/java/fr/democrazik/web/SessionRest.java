@@ -121,7 +121,9 @@ public class SessionRest {
 	}
 	
 	@RequestMapping(value = "/session/{id}", method = RequestMethod.DELETE)
+
 	public boolean supprime(@PathVariable Long id) {
+
 		sessionRepo.delete(id);
 		return true;
 	}
