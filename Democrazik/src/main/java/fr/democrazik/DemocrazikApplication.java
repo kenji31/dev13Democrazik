@@ -84,44 +84,7 @@ utilisateurRepo.save(u11); utilisateurRepo.save(u12);
 
 
 
-		//Création Artiste BD
-Artiste a1 = new Artiste ("The Queens");
-Artiste a2 =new Artiste ("The Beatles");
-Artiste a3 = new Artiste ("Amy Winehouse");
-Artiste a4 =new Artiste ("Johnny Haliday");
-Artiste a5 = new Artiste ("Elvis Presley");
-Artiste a6 =new Artiste ("Michael Jackson");
-Artiste a7 = new Artiste ("Ray Charles");
-Artiste a8 =new Artiste ("Louis Armstrong");
-Artiste a9 = new Artiste ("Édith Piaf");
-Artiste a10 =new Artiste ("Jacques Brel");
-Artiste a11 = new Artiste ("Georges Brassens");
-Artiste a12 = new Artiste ("Édith Piaf");
-Artiste a13 =new Artiste ("Jacques Brel");
-Artiste a14 = new Artiste ("Georges Brassens");
-Artiste a15 = new Artiste ("Bob Marley");
-Artiste a16 = new Artiste ("Nirvana");
-Artiste a17 = new Artiste ("Johnny Cash");
-Artiste a18 = new Artiste ("Robert Johnson");
-Artiste a19 = new Artiste ("Pink Floyd");
-Artiste a20 = new Artiste ("Elvis Presley");
-Artiste a21 = new Artiste ("The Velvet Underground");
-Artiste a22 = new Artiste ("David Bowie");
-Artiste a23 = new Artiste ("AC/DC");
-Artiste a24 = new Artiste ("Led Zepelin");
-Artiste a25 = new Artiste ("Édith Piaf");
-Artiste a26 = new Artiste ("Britney Spears");
-Artiste a27 = new Artiste ("Public Enemy");
-Artiste a28 = new Artiste ("Eminem");
 
-
-artisteRepo.save(a1);artisteRepo.save(a2); artisteRepo.save(a3); artisteRepo.save(a4); artisteRepo.save(a5); artisteRepo.save(a6); 
-artisteRepo.save(a7); artisteRepo.save(a8); artisteRepo.save(a9); artisteRepo.save(a10); artisteRepo.save(a11); artisteRepo.save(a12);
-artisteRepo.save(a13); artisteRepo.save(a14); artisteRepo.save(a15); artisteRepo.save(a16); artisteRepo.save(a17);
-artisteRepo.save(a18); artisteRepo.save(a19); artisteRepo.save(a20); artisteRepo.save(a21); artisteRepo.save(a22); artisteRepo.save(a23);
-artisteRepo.save(a24); artisteRepo.save(a25); artisteRepo.save(a26); artisteRepo.save(a27); artisteRepo.save(a28);
-		
-			
 		
 
 		//Création Genre BD
