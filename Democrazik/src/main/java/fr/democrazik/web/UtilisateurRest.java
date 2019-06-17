@@ -52,9 +52,9 @@ import fr.democrazik.entities.Utilisateur;
 		
 		//Mettre à jour
 		@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
-		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur p){
-			p.setId(id);
-			return utilisateurRepo.save(p);
+		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur u){
+			//utilisateurRepo.delete(id);
+			return utilisateurRepo.save(u);
 		}
 		
 		//Connexion utilisateur (utiliser dépendance Spring Security pour plus de sécurité) --> OK
