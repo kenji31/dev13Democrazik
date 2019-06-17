@@ -1,5 +1,6 @@
 package fr.democrazik.web;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,11 @@ public class ArtisteRest {
 					return stock.get(0);
 				}
 			}
+			
+			@RequestMapping(value="/useless-artists",method=RequestMethod.GET)
+			public  List<BigInteger> uselessArtist(){
+				return artisteRepo.idOfUselessArtists();
+			}
+			
 	
 }

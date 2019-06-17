@@ -15,11 +15,15 @@ public interface MorceauRepository extends JpaRepository<Morceau, Long> {
 	@Query("select v, count(v) as compte from Vote v group by v.morceau.id order by compte desc")
 	public List<Object[]> orderMorceauByVote();
 	
-	@Query("select v.morceau, v.morceau.session.id count(v) as compte from Vote v group by v.morceau.id order by compte desc")
+	@Query("select v.morceau, v.morceau.session.id, count(v) as compte from Vote v group by v.morceau.id order by compte desc")
 	public List<Object[]> getPopulaire();
 	
-	@Query(value ="select m from Morceau m where session_id=?1 ORDER BY RAND() LIMIT 1", nativeQuery=true) // id_session ou session_id ?
+	@Query(value ="SELECT * FROM Morceau WHERE session_id=?1 ORDER BY RAND() LIMIT 1", nativeQuery=true) // id_session ou session_id ?
 	public List<Morceau> getRandomMorceauOfSession(Long id);
 	
+	
+	//@Query(value ="SELECT * FROM (SELECT * FROM morceau WHERE session_id=?1 ORDER BY dbms_random.value) WHERE rownum =1", nativeQuery=true) // id_session ou session_id ?
+	//public List<Morceau> getRandomMorceauOfSession(Long id);
 }
+ 
  

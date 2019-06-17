@@ -1,5 +1,6 @@
 package fr.democrazik.web;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,11 @@ public class GenreRest {
 				genreRepo.delete(id);
 				return true;
 			}
-	
+			
+			@RequestMapping(value="/useless-genres",method=RequestMethod.GET)
+			public  List<BigInteger> uselessGenre(){
+				return genreRepo.idOfUselessGenres();
+			}
+			
+	 
 }

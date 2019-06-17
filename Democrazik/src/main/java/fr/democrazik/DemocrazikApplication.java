@@ -89,13 +89,11 @@ Artiste a1 = new Artiste ("The Queens");
 Artiste a2 =new Artiste ("The Beatles");
 Artiste a3 = new Artiste ("Amy Winehouse");
 Artiste a4 =new Artiste ("Johnny Haliday");
-Artiste a5 = new Artiste ("Elvis Presley");
+
 Artiste a6 =new Artiste ("Michael Jackson");
 Artiste a7 = new Artiste ("Ray Charles");
 Artiste a8 =new Artiste ("Louis Armstrong");
-Artiste a9 = new Artiste ("Édith Piaf");
-Artiste a10 =new Artiste ("Jacques Brel");
-Artiste a11 = new Artiste ("Georges Brassens");
+
 Artiste a12 = new Artiste ("Édith Piaf");
 Artiste a13 =new Artiste ("Jacques Brel");
 Artiste a14 = new Artiste ("Georges Brassens");
@@ -109,17 +107,17 @@ Artiste a21 = new Artiste ("The Velvet Underground");
 Artiste a22 = new Artiste ("David Bowie");
 Artiste a23 = new Artiste ("AC/DC");
 Artiste a24 = new Artiste ("Led Zepelin");
-Artiste a25 = new Artiste ("Édith Piaf");
+
 Artiste a26 = new Artiste ("Britney Spears");
 Artiste a27 = new Artiste ("Public Enemy");
 Artiste a28 = new Artiste ("Eminem");
 
 
-artisteRepo.save(a1);artisteRepo.save(a2); artisteRepo.save(a3); artisteRepo.save(a4); artisteRepo.save(a5); artisteRepo.save(a6); 
-artisteRepo.save(a7); artisteRepo.save(a8); artisteRepo.save(a9); artisteRepo.save(a10); artisteRepo.save(a11); artisteRepo.save(a12);
+artisteRepo.save(a1);artisteRepo.save(a2); artisteRepo.save(a3); artisteRepo.save(a4);  artisteRepo.save(a6); 
+artisteRepo.save(a7); artisteRepo.save(a8);  artisteRepo.save(a12);
 artisteRepo.save(a13); artisteRepo.save(a14); artisteRepo.save(a15); artisteRepo.save(a16); artisteRepo.save(a17);
 artisteRepo.save(a18); artisteRepo.save(a19); artisteRepo.save(a20); artisteRepo.save(a21); artisteRepo.save(a22); artisteRepo.save(a23);
-artisteRepo.save(a24); artisteRepo.save(a25); artisteRepo.save(a26); artisteRepo.save(a27); artisteRepo.save(a28);
+artisteRepo.save(a24);  artisteRepo.save(a26); artisteRepo.save(a27); artisteRepo.save(a28);
 		
 			
 		
@@ -173,7 +171,7 @@ Morceau m14 = new Morceau("Allumer le feu", s1, g6, a4);
 Morceau m15 = new Morceau("Oh Marie", s1, g10, a4);
 Morceau m16 = new Morceau("Allez les bleus", s1, g10, a4);
 Morceau m17 = new Morceau("La vie en rose", s1, g10, a12);
-Morceau m18 = new Morceau("Les copains d'abord", s1, g10, a11);
+Morceau m18 = new Morceau("Les copains d'abord", s1, g10, a2);
 Morceau m19 = new Morceau("Ne me quitte pas", s1, g10, a13);
 Morceau m20 = new Morceau("Another brick in the wall", s2, g16, a19);
 Morceau m21 = new Morceau("Another brick in the wall", s1, g16, a19);
@@ -183,7 +181,7 @@ Morceau m24 = new Morceau("Modern Love", s1, g5, a22);
 Morceau m25 = new Morceau("Can't help falling in love", s2, g6, a20);
 Morceau m26 = new Morceau("Love me tender", s2, g6, a20);
 Morceau m27 = new Morceau("La vie en rose", s2, g10, a12);
-Morceau m28 = new Morceau("Les copains d'abord", s2, g10, a11);
+Morceau m28 = new Morceau("Les copains d'abord", s2, g10, a2);
 Morceau m29 = new Morceau("Ne me quitte pas", s2, g10, a13);
 Morceau m30 = new Morceau("Burning love", s2, g10, a20);
 Morceau m31 = new Morceau("Highway to hell", s1, g19, a23);
