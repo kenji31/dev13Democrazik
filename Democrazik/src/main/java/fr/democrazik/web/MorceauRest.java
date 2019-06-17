@@ -38,15 +38,15 @@ public class MorceauRest {
 			@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
 			public Morceau nextMorceau(@PathVariable Long id){
 				List<Object[]> liste = morceauRepo.getPopulaire();
-				String morceau=null;
+				Morceau morceau=null;
 				for (Object[] c : liste) {
 					if(c[1]==id){
-						morceau=c[0];
+						morceau=(Morceau) c[0];
 						break;
 					}
 				}
 				if (morceau==null){
-					morceau = getRandomMorceauOfSession(id);
+					morceau = morceauRepo.getRandomMorceauOfSession(id).get(0);
 				}
 								
 				return morceau;
