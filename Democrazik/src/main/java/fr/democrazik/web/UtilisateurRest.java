@@ -36,31 +36,13 @@ import fr.democrazik.entities.Utilisateur;
 		}
 	
 		
-//		//Ajouter dans BD
-//		@RequestMapping(value="/user",method=RequestMethod.POST)
-//		public Utilisateur save(@RequestBody Utilisateur p){
-//		
-//				return utilisateurRepo.save(p);
-//			
-//		}
-		
-		//Ajouter dans BD (vérifier si mail déjà existant)
-				@RequestMapping(value="/user",method=RequestMethod.POST)
-				public Utilisateur save(@RequestBody Utilisateur p){
-				List<Utilisateur> allUser = utilisateurRepo.findAll();
-				Utilisateur mailIdentique=new Utilisateur("Mail inexistant", "", "", "");
-				for (Utilisateur user : allUser) {
-					if(p.getMail().equals(user.getMail())) {
-					mailIdentique.setNom("Mail existant");
-				}
-				}
-				if (mailIdentique.getNom().equals("Mail inexistant")) {
-					return utilisateurRepo.save(p); //si mail inexistant dans BD, renvoyer données utilisateur qui vient de s'inscrire
-				} else {
-					return mailIdentique; //si mail existant, renvoyer un utilistaeur dont le nom est "Mail existant" (condition dans front)
-				}
-				}
-		
+		//Ajouter dans BD
+		@RequestMapping(value="/user",method=RequestMethod.POST)
+		public Utilisateur save(@RequestBody Utilisateur p){
+			return utilisateurRepo.save(p);
+			
+		}
+
 		//Supprimer
 		@RequestMapping(value="/users/{id}",method=RequestMethod.DELETE)
 		public boolean supp(@PathVariable Long id){
@@ -70,9 +52,10 @@ import fr.democrazik.entities.Utilisateur;
 		
 		//Mettre à jour
 		@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
-		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur u){
+		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur p){
 			//utilisateurRepo.delete(id);
-			return utilisateurRepo.save(u);
+			p.setId(id);
+			return utilisateurRepo.save(p);
 		}
 		
 		//Connexion utilisateur (utiliser dépendance Spring Security pour plus de sécurité) --> OK
@@ -87,17 +70,6 @@ import fr.democrazik.entities.Utilisateur;
 			}
 			return userConnect;
 		}
-		
-		//Deconnexion utilisateur --> OK
-		@RequestMapping(value="/userdeconnexion/{id}", method=RequestMethod.POST)
-		public Utilisateur deconnexionUtilisateur(@PathVariable Long id) {
-			Utilisateur utilisateur = utilisateurRepo.findOne(id);
-			utilisateur.setSession(null);
-			utilisateurRepo.save(utilisateur);
-			return utilisateur;
-				}
-			
-		
 		
 	}
 
