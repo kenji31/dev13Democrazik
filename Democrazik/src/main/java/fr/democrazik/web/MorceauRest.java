@@ -35,22 +35,22 @@ public class MorceauRest {
 				
 			}
 	
-			@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
-			public Morceau nextMorceau(@PathVariable Long id){
-				List<Object[]> liste = morceauRepo.getPopulaire();
-				String morceau=null;
-				for (Object[] c : liste) {
-					if(c[1]==id){
-						morceau=c[0];
-						break;
-					}
-				}
-				if (morceau==null){
-					morceau = getRandomMorceauOfSession(id);
-				}
-								
-				return morceau;
-			}
+//			@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
+//			public Morceau nextMorceau(@PathVariable Long id){
+//				List<Object[]> liste = morceauRepo.getPopulaire();
+//				String morceau=null;
+//				for (Object[] c : liste) {
+//					if(c[1]==id){
+//						morceau=c[0];
+//						break;
+//					}
+//				}
+//				if (morceau==null){
+//					morceau = getRandomMorceauOfSession(id);
+//				}
+//								
+//				return morceau;
+//			}
 	
 			//Rechercher en fonction session --> OK
 			@RequestMapping(value="/morceau/session/{id}",method=RequestMethod.GET)
