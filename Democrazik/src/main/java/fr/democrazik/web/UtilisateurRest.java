@@ -53,6 +53,7 @@ import fr.democrazik.entities.Utilisateur;
 		//Mettre à jour
 		@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
 		public Utilisateur modif(@PathVariable Long id,@RequestBody Utilisateur p){
+			//utilisateurRepo.delete(id);
 			p.setId(id);
 			return utilisateurRepo.save(p);
 		}

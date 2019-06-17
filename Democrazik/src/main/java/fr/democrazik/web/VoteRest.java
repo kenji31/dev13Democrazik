@@ -71,5 +71,13 @@ public class VoteRest {
 			return voteByUtilisateur;
 		}
 		
-		
+		// faire une methode qui supprime les votes d'un morceau qui vient d'etre joué
+		@RequestMapping(value="/vote/morceau/{id}",method=RequestMethod.GET)
+		public boolean deleteVotesOfMorceau(@PathVariable Long id){
+			List<Vote> votes = voteRepo.getVotesOfMorceau(id);
+			for (Vote vote : votes) {
+				voteRepo.delete(vote.getId());
+			}
+			return true;
+		}
 }

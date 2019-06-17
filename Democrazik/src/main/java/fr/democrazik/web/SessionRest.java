@@ -2,8 +2,6 @@ package fr.democrazik.web;
 
 import java.util.List;
 
-import javax.persistence.PreRemove;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,13 +52,16 @@ public class SessionRest {
 	}
 
 	// Connexion session
-	@RequestMapping(value = "/sessionconnexion", method = RequestMethod.POST)
-	public Session connexionSession(@RequestBody Session session) {
+	@RequestMapping(value = "/sessionconnexion/{id}", method = RequestMethod.POST)
+	public Session connexionSession(@PathVariable Long id, @RequestBody Session session) {
 		List<Session> sessions = sessionRepo.findAll();
 		Session sessionConnect = new Session();
 		for (Session session2 : sessions) {
 			if (session.getNom().equals(session2.getNom()) && (session.getCode().equals(session2.getCode()))) {
 				sessionConnect = session2;
+				Utilisateur utilisateur = utilisateurRepo.findOne(id);
+				utilisateur.setSession(sessionConnect);
+				utilisateurRepo.save(utilisateur);
 			}
 		}
 		return sessionConnect;
@@ -72,7 +73,7 @@ public class SessionRest {
 		return sessionRepo.findSessionByNom(nom);
 	}
 
-	// Supprimer en fonction ID
+	// Supprimer en fonction ID --> OK
 
 	@RequestMapping(value = "/sessions/{id}", method = RequestMethod.DELETE)
 	public boolean supp(@PathVariable Long id) {
@@ -82,32 +83,46 @@ public class SessionRest {
 
 		for (Vote voteListe : votes) {
 			
-			if (voteListe.getMorceau().getSession().getId() == id) {
+			if (voteListe.getMorceau().getSession().getId() == id) { //suppression d'abord des votes de la session (sinon pb dépendance) Possibilité p-ê d'utiliser suppression en cascade mais n'a pas marché
 				voteRepo.delete(voteListe.getId());
 			}
 		
 		}
-		List<Morceau> morceaux = morceauRepo.findAll();
+		List<Morceau> morceaux = morceauRepo.findAll(); //suppression des morceaux de la session
 
 		for (Morceau morceauListe : morceaux) {
-			if (morceauListe.getSession().getId()!=null) {
 			if (morceauListe.getSession().getId() == id) {
 				morceauRepo.delete(morceauListe.getId());
 			}
 		}
-		}
 		
-		List<Utilisateur> utilisateurs = utilisateurRepo.findAll();
+		List<Utilisateur> utilisateurs = utilisateurRepo.findAll(); //set Session des Utilisateurs à 'null' pour ne pas les supprimer (sinon besoin de se réinscrire pour se connecter) 
 		for (Utilisateur utilisateurListe : utilisateurs) {
 			if (utilisateurListe.getSession()!=null) {
-			if (utilisateurListe.getSession().getId() == id) {
-				utilisateurListe.setSession(null);
-			}
+				if (utilisateurListe.getSession().getId() == id) {
+					utilisateurListe.setSession(null);
+				}
 			}
 		}
+		
+		List<Long> idUselessArtists = artisteRepo.idOfUselessArtists();
+		for (Long idArt : idUselessArtists) {
+			artisteRepo.delete(idArt);
+		}
+		List<Long> idUselessGenres = genreRepo.idOfUselessGenres();
+		for (Long idGenre : idUselessGenres) {
+			genreRepo.delete(idGenre);
+		}
+		
 		sessionRepo.delete(id);
 		return true;
 
+	}
+	
+	@RequestMapping(value = "/session/{id}", method = RequestMethod.DELETE)
+	public boolean supprime(@PathVariable Long id) {
+		sessionRepo.delete(id);
+		return true;
 	}
 }
 

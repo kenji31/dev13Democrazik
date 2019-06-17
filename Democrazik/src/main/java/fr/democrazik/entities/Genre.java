@@ -16,11 +16,6 @@ public class Genre {
 	private String libelle;
 	
 
-	
-	
-	
-	
-
 	public Genre(Long id, String libelle) {
 		super();
 		this.id = id;

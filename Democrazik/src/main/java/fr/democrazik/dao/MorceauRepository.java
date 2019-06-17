@@ -8,18 +8,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import fr.democrazik.entities.Morceau;
-import fr.democrazik.entities.Session;
 
 
 public interface MorceauRepository extends JpaRepository<Morceau, Long> {
 	
-
-//	@Query("select morceau, compte from Morceau morceau, "
-//			+ "(select vote, count(vote) as compte from Vote vote groub by vote.idTitre) table"
-//			+ "where morceau = table.vote.morceau ORDER BY table.compte")
-//	List<Object[]> orderMorceauByVote();
-//	
-
-	public List<Morceau> findMorceauBySession(Session session);
+	@Query("select v, count(v) as compte from Vote v group by v.morceau.id order by compte desc")
+	public List<Object[]> orderMorceauByVote();
+	
+	@Query("select v.morceau, v.morceau.session.id count(v) as compte from Vote v group by v.morceau.id order by compte desc")
+	public List<Object[]> getPopulaire();
+	
+	@Query(value ="select m from Morceau m where session_id=?1 ORDER BY RAND() LIMIT 1", nativeQuery=true) // id_session ou session_id ?
+	public List<Morceau> getRandomMorceauOfSession(Long id);
 	
 }
+ 
