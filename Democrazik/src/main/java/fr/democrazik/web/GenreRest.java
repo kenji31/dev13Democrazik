@@ -29,28 +29,28 @@ public class GenreRest {
 	}
 	
 	//Ajouter dans BD
-			@RequestMapping(value="/genre",method=RequestMethod.POST)
-			public Genre save(@RequestBody Genre g){
-				List<Genre> stock = genreRepo.findGenreByLibelle(g.getLibelle());
-				if (stock.isEmpty()) {
-					return genreRepo.save(g);
-				}
-				else {
-					return stock.get(0);
-				}
-			}
-			
-			//Supprimer
-			@RequestMapping(value="/genres/{id}",method=RequestMethod.DELETE)
-			public boolean supp(@PathVariable Long id){
-				genreRepo.delete(id);
-				return true;
-			}
-			
-			@RequestMapping(value="/useless-genres",method=RequestMethod.GET)
-			public  List<BigInteger> uselessGenre(){
-				return genreRepo.idOfUselessGenres();
-			}
+	@RequestMapping(value="/genre",method=RequestMethod.POST)
+	public Genre save(@RequestBody Genre g){
+		List<Genre> stock = genreRepo.findGenreByLibelle(g.getLibelle());
+		if (stock.isEmpty()) {
+			return genreRepo.save(g);
+		}
+		else {
+			return stock.get(0);
+		}
+	}
+	
+	//Supprimer
+	@RequestMapping(value="/genres/{id}",method=RequestMethod.DELETE)
+	public boolean supp(@PathVariable Long id){
+		genreRepo.delete(id);
+		return true;
+	}
+	
+	@RequestMapping(value="/useless-genres",method=RequestMethod.GET)
+	public  List<BigInteger> uselessGenre(){
+		return genreRepo.idOfUselessGenres();
+	}
 			
 	 
 }

@@ -18,6 +18,7 @@ import fr.democrazik.dao.MorceauRepository;
 import fr.democrazik.dao.SessionRepository;
 import fr.democrazik.dao.UtilisateurRepository;
 import fr.democrazik.dao.VoteRepository;
+import fr.democrazik.entities.Artiste;
 import fr.democrazik.entities.Morceau;
 import fr.democrazik.entities.Session;
 import fr.democrazik.entities.Utilisateur;
@@ -49,7 +50,14 @@ public class SessionRest {
 	// Ajouter dans BD
 	@RequestMapping(value = "/session", method = RequestMethod.POST)
 	public Session save(@RequestBody Session s) {
-		return sessionRepo.save(s);
+		List<Session> stock = sessionRepo.findSessionByNom(s.getNom());
+		if (stock.isEmpty()) {
+			return sessionRepo.save(s);
+		}
+		else {
+			Session s_null = new Session(null, null);
+			return s_null;
+		}
 	}
 
 	// Connexion session

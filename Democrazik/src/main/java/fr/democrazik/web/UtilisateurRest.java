@@ -40,7 +40,6 @@ import fr.democrazik.entities.Utilisateur;
 		@RequestMapping(value="/user",method=RequestMethod.POST)
 		public Utilisateur save(@RequestBody Utilisateur p){
 			return utilisateurRepo.save(p);
-			
 		}
 
 		//Supprimer
