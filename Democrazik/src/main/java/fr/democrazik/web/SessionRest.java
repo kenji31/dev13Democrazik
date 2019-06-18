@@ -50,8 +50,8 @@ public class SessionRest {
 	// Ajouter dans BD
 	@RequestMapping(value = "/session", method = RequestMethod.POST)
 	public Session save(@RequestBody Session s) {
-		List<Session> stock = sessionRepo.findSessionByNom(s.getNom());
-		if (stock.isEmpty()) {
+		Session stock = sessionRepo.findSessionByNom(s.getNom());
+		if (stock == null) {
 			return sessionRepo.save(s);
 		}
 		else {
@@ -78,7 +78,7 @@ public class SessionRest {
 
 	// Rechercher en fonction nom
 	@RequestMapping(value = "/session/{nom}", method = RequestMethod.GET)
-	public List<Session> findSessionbyNom(@PathVariable String nom) {
+	public Session findSessionbyNom(@PathVariable String nom) {
 		return sessionRepo.findSessionByNom(nom);
 	}
 
