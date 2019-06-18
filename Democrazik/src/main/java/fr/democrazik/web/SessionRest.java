@@ -1,5 +1,6 @@
 package fr.democrazik.web;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,13 +106,13 @@ public class SessionRest {
 			}
 		}
 		
-		List<Long> idUselessArtists = artisteRepo.idOfUselessArtists();
-		for (Long idArt : idUselessArtists) {
-			artisteRepo.delete(idArt);
+		List<BigInteger> idUselessArtists = artisteRepo.idOfUselessArtists();
+		for (BigInteger idArt : idUselessArtists) {
+			artisteRepo.delete(idArt.longValue());
 		}
-		List<Long> idUselessGenres = genreRepo.idOfUselessGenres();
-		for (Long idGenre : idUselessGenres) {
-			genreRepo.delete(idGenre);
+		List<BigInteger> idUselessGenres = genreRepo.idOfUselessGenres();
+		for (BigInteger idGenre : idUselessGenres) {
+			genreRepo.delete(idGenre.longValue());
 		}
 		
 		sessionRepo.delete(id);
@@ -120,7 +121,9 @@ public class SessionRest {
 	}
 	
 	@RequestMapping(value = "/session/{id}", method = RequestMethod.DELETE)
+
 	public boolean supprime(@PathVariable Long id) {
+
 		sessionRepo.delete(id);
 		return true;
 	}

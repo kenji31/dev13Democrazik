@@ -1,9 +1,11 @@
 package fr.democrazik.web;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +37,9 @@ public class MorceauRest {
 				
 			}
 	
-		 	@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
+
+			@RequestMapping(value="/next-morceau/{id}",method=RequestMethod.GET)
+
 			public Morceau nextMorceau(@PathVariable Long id){
 				List<Object[]> liste = morceauRepo.getPopulaire();
 				Morceau morceau=null;
@@ -51,6 +55,7 @@ public class MorceauRest {
 								
 				return morceau;
 			}
+
 	
 			//Rechercher en fonction session --> OK
 			@RequestMapping(value="/morceau/session/{id}",method=RequestMethod.GET)
@@ -120,5 +125,18 @@ public class MorceauRest {
 								
 				return liste;
 			}
-	
+			
+			//////////////////////////////////////////////////
+			@RequestMapping(value="/tri-populaire",method=RequestMethod.GET)
+			public  List<Object[]> triPopulaire(){
+				return morceauRepo.getPopulaire();
+				
+			}
+	/////////////////////////////////////////////////////////
+		
+			
+			@RequestMapping(value="/random/{id}",method=RequestMethod.GET)
+			public List<Morceau> RandomM(@PathVariable Long id){
+				return morceauRepo.getRandomMorceauOfSession(id);
+			}
 }
